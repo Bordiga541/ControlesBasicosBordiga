@@ -12,10 +12,18 @@ namespace RegistrarTerea
 {
     public partial class RegistrarTarea : Form
     {
+        string datoConcatenar;
+        string[] vectorActividad = new string[5];
+        string[] vectorRegistroActividad = new string[4];
+        int indiceRegistro = 0;
+        frmMostrar frmMostrar = new frmMostrar();
+        int indiceFilaRegistro;
         public RegistrarTarea()
         {
             InitializeComponent();
         }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -46,6 +54,13 @@ namespace RegistrarTerea
                     if (txtDetalle.Text != "")
                     {
                         MessageBox.Show("Vamos a grabar...");
+
+
+                        frmMostrar.matrizTareas[indiceFilaRegistro, 0] = dtpFecha.Value.ToString();
+                        frmMostrar.matrizTareas[indiceFilaRegistro, 1] = lstTipo.Text;
+                        frmMostrar.matrizTareas[indiceFilaRegistro, 2] = txtDetalle.Text;
+                        frmMostrar.matrizTareas[indiceFilaRegistro, 3] = mrcReunion.Text;
+                        frmMostrar.matrizTareas[indiceFilaRegistro, 4] = mrcTareas.Text;
                     }
                     else
                     {
@@ -58,6 +73,7 @@ namespace RegistrarTerea
                     MessageBox.Show("Seleccione una actividad...");
                     lstTipo.Focus();
                 }
+                
             }
             else
             {
@@ -68,6 +84,29 @@ namespace RegistrarTerea
                 dtpFecha.Focus();
 
             }
+        }
+
+        private void RegistrarTarea_Load(object sender, EventArgs e)
+        {
+            lstTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void lstTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        
+            
+        }
+
+        private void cmdmostrar_Click(object sender, EventArgs e)
+        {
+            frmMostrar frmMostrar = new frmMostrar();
+            frmMostrar.Show();
+            this.Hide();
         }
     }
 }

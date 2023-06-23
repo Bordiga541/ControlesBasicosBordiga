@@ -35,15 +35,16 @@
             this.txtDetalle = new System.Windows.Forms.TextBox();
             this.lstTipo = new System.Windows.Forms.ComboBox();
             this.mrcReunion = new System.Windows.Forms.GroupBox();
-            this.optSi = new System.Windows.Forms.RadioButton();
             this.optNo = new System.Windows.Forms.RadioButton();
+            this.optSi = new System.Windows.Forms.RadioButton();
             this.mrcTareas = new System.Windows.Forms.GroupBox();
-            this.chkRepositorio = new System.Windows.Forms.CheckBox();
-            this.chkDebate = new System.Windows.Forms.CheckBox();
-            this.chkInvestigacion = new System.Windows.Forms.CheckBox();
             this.chkNotasReunion = new System.Windows.Forms.CheckBox();
+            this.chkInvestigacion = new System.Windows.Forms.CheckBox();
+            this.chkDebate = new System.Windows.Forms.CheckBox();
+            this.chkRepositorio = new System.Windows.Forms.CheckBox();
             this.cmdGrabar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
+            this.cmdmostrar = new System.Windows.Forms.Button();
             this.mrcReunion.SuspendLayout();
             this.mrcTareas.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +117,7 @@
             this.lstTipo.Name = "lstTipo";
             this.lstTipo.Size = new System.Drawing.Size(322, 24);
             this.lstTipo.TabIndex = 3;
+            this.lstTipo.SelectedIndexChanged += new System.EventHandler(this.lstTipo_SelectedIndexChanged);
             // 
             // mrcReunion
             // 
@@ -132,30 +134,30 @@
             this.mrcReunion.Text = "Reunión";
             this.mrcReunion.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // optSi
-            // 
-            this.optSi.AutoSize = true;
-            this.optSi.Location = new System.Drawing.Point(63, 49);
-            this.optSi.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.optSi.Name = "optSi";
-            this.optSi.Size = new System.Drawing.Size(51, 26);
-            this.optSi.TabIndex = 0;
-            this.optSi.TabStop = true;
-            this.optSi.Text = "Si";
-            this.optSi.UseVisualStyleBackColor = true;
-            this.optSi.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // optNo
             // 
             this.optNo.AutoSize = true;
             this.optNo.Location = new System.Drawing.Point(201, 49);
             this.optNo.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.optNo.Name = "optNo";
-            this.optNo.Size = new System.Drawing.Size(59, 26);
+            this.optNo.Size = new System.Drawing.Size(46, 21);
             this.optNo.TabIndex = 0;
-            this.optNo.TabStop = true;
             this.optNo.Text = "No";
             this.optNo.UseVisualStyleBackColor = true;
+            // 
+            // optSi
+            // 
+            this.optSi.AutoSize = true;
+            this.optSi.Checked = true;
+            this.optSi.Location = new System.Drawing.Point(63, 49);
+            this.optSi.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.optSi.Name = "optSi";
+            this.optSi.Size = new System.Drawing.Size(40, 21);
+            this.optSi.TabIndex = 0;
+            this.optSi.TabStop = true;
+            this.optSi.Text = "Si";
+            this.optSi.UseVisualStyleBackColor = true;
+            this.optSi.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // mrcTareas
             // 
@@ -172,29 +174,17 @@
             this.mrcTareas.TabStop = false;
             this.mrcTareas.Text = "Tareas";
             // 
-            // chkRepositorio
+            // chkNotasReunion
             // 
-            this.chkRepositorio.AutoSize = true;
-            this.chkRepositorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRepositorio.Location = new System.Drawing.Point(39, 38);
-            this.chkRepositorio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.chkRepositorio.Name = "chkRepositorio";
-            this.chkRepositorio.Size = new System.Drawing.Size(79, 17);
-            this.chkRepositorio.TabIndex = 0;
-            this.chkRepositorio.Text = "Repositorio";
-            this.chkRepositorio.UseVisualStyleBackColor = true;
-            // 
-            // chkDebate
-            // 
-            this.chkDebate.AutoSize = true;
-            this.chkDebate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDebate.Location = new System.Drawing.Point(190, 38);
-            this.chkDebate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.chkDebate.Name = "chkDebate";
-            this.chkDebate.Size = new System.Drawing.Size(61, 17);
-            this.chkDebate.TabIndex = 1;
-            this.chkDebate.Text = "Debate";
-            this.chkDebate.UseVisualStyleBackColor = true;
+            this.chkNotasReunion.AutoSize = true;
+            this.chkNotasReunion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNotasReunion.Location = new System.Drawing.Point(190, 66);
+            this.chkNotasReunion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.chkNotasReunion.Name = "chkNotasReunion";
+            this.chkNotasReunion.Size = new System.Drawing.Size(97, 17);
+            this.chkNotasReunion.TabIndex = 1;
+            this.chkNotasReunion.Text = "Notas Reunión";
+            this.chkNotasReunion.UseVisualStyleBackColor = true;
             // 
             // chkInvestigacion
             // 
@@ -208,44 +198,67 @@
             this.chkInvestigacion.Text = "Investigación";
             this.chkInvestigacion.UseVisualStyleBackColor = true;
             // 
-            // chkNotasReunion
+            // chkDebate
             // 
-            this.chkNotasReunion.AutoSize = true;
-            this.chkNotasReunion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNotasReunion.Location = new System.Drawing.Point(190, 66);
-            this.chkNotasReunion.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.chkNotasReunion.Name = "chkNotasReunion";
-            this.chkNotasReunion.Size = new System.Drawing.Size(97, 17);
-            this.chkNotasReunion.TabIndex = 1;
-            this.chkNotasReunion.Text = "Notas Reunión";
-            this.chkNotasReunion.UseVisualStyleBackColor = true;
+            this.chkDebate.AutoSize = true;
+            this.chkDebate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDebate.Location = new System.Drawing.Point(190, 38);
+            this.chkDebate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.chkDebate.Name = "chkDebate";
+            this.chkDebate.Size = new System.Drawing.Size(61, 17);
+            this.chkDebate.TabIndex = 1;
+            this.chkDebate.Text = "Debate";
+            this.chkDebate.UseVisualStyleBackColor = true;
+            // 
+            // chkRepositorio
+            // 
+            this.chkRepositorio.AutoSize = true;
+            this.chkRepositorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRepositorio.Location = new System.Drawing.Point(39, 38);
+            this.chkRepositorio.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.chkRepositorio.Name = "chkRepositorio";
+            this.chkRepositorio.Size = new System.Drawing.Size(79, 17);
+            this.chkRepositorio.TabIndex = 0;
+            this.chkRepositorio.Text = "Repositorio";
+            this.chkRepositorio.UseVisualStyleBackColor = true;
             // 
             // cmdGrabar
             // 
-            this.cmdGrabar.Location = new System.Drawing.Point(204, 552);
+            this.cmdGrabar.Location = new System.Drawing.Point(160, 550);
             this.cmdGrabar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdGrabar.Name = "cmdGrabar";
-            this.cmdGrabar.Size = new System.Drawing.Size(134, 27);
+            this.cmdGrabar.Size = new System.Drawing.Size(92, 28);
             this.cmdGrabar.TabIndex = 6;
-            this.cmdGrabar.Text = "Grabar";
+            this.cmdGrabar.Text = "Registrar";
             this.cmdGrabar.UseVisualStyleBackColor = true;
             this.cmdGrabar.Click += new System.EventHandler(this.cmdGrabar_Click);
             // 
             // cmdCancelar
             // 
-            this.cmdCancelar.Location = new System.Drawing.Point(62, 552);
+            this.cmdCancelar.Location = new System.Drawing.Point(77, 550);
             this.cmdCancelar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(134, 27);
+            this.cmdCancelar.Size = new System.Drawing.Size(80, 27);
             this.cmdCancelar.TabIndex = 6;
             this.cmdCancelar.Text = "Cancelar";
             this.cmdCancelar.UseVisualStyleBackColor = true;
+            // 
+            // cmdmostrar
+            // 
+            this.cmdmostrar.Location = new System.Drawing.Point(254, 550);
+            this.cmdmostrar.Name = "cmdmostrar";
+            this.cmdmostrar.Size = new System.Drawing.Size(84, 28);
+            this.cmdmostrar.TabIndex = 8;
+            this.cmdmostrar.Text = "Mostrar";
+            this.cmdmostrar.UseVisualStyleBackColor = true;
+            this.cmdmostrar.Click += new System.EventHandler(this.cmdmostrar_Click);
             // 
             // RegistrarTarea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 593);
+            this.ClientSize = new System.Drawing.Size(993, 593);
+            this.Controls.Add(this.cmdmostrar);
             this.Controls.Add(this.cmdCancelar);
             this.Controls.Add(this.cmdGrabar);
             this.Controls.Add(this.mrcTareas);
@@ -261,6 +274,7 @@
             this.Name = "RegistrarTarea";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarTarea";
+            this.Load += new System.EventHandler(this.RegistrarTarea_Load);
             this.mrcReunion.ResumeLayout(false);
             this.mrcReunion.PerformLayout();
             this.mrcTareas.ResumeLayout(false);
@@ -288,5 +302,6 @@
         private System.Windows.Forms.CheckBox chkRepositorio;
         private System.Windows.Forms.Button cmdGrabar;
         private System.Windows.Forms.Button cmdCancelar;
+        private System.Windows.Forms.Button cmdmostrar;
     }
 }
