@@ -16,7 +16,7 @@ namespace RegistrarTerea
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrarTarea());
+            Application.Run(new Login2());
         }
     }
 }
